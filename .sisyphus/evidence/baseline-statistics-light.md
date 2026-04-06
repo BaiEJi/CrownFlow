@@ -1,0 +1,114 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - complementary [ref=e4]:
+      - generic [ref=e5]:
+        - heading "CrownFlow" [level=1] [ref=e7]
+        - menu [ref=e8]:
+          - menuitem "dashboard 概览" [ref=e9] [cursor=pointer]:
+            - img "dashboard" [ref=e10]:
+              - img [ref=e11]
+            - generic [ref=e13]: 概览
+          - menuitem "user 会员管理" [ref=e14] [cursor=pointer]:
+            - img "user" [ref=e15]:
+              - img [ref=e16]
+            - generic [ref=e18]: 会员管理
+          - menuitem "bar-chart 统计图表" [ref=e19] [cursor=pointer]:
+            - img "bar-chart" [ref=e20]:
+              - img [ref=e21]
+            - generic [ref=e23]: 统计图表
+          - menuitem "setting 设置" [ref=e24] [cursor=pointer]:
+            - img "setting" [ref=e25]:
+              - img [ref=e26]
+            - generic [ref=e28]: 设置
+        - generic [ref=e29]:
+          - button "moon 深色模式" [ref=e30] [cursor=pointer]:
+            - img "moon" [ref=e32]:
+              - img [ref=e33]
+            - generic [ref=e35]: 深色模式
+          - button "search 搜索" [ref=e36] [cursor=pointer]:
+            - img "search" [ref=e38]:
+              - img [ref=e39]
+            - generic [ref=e41]: 搜索
+          - button "menu-fold 收起菜单" [ref=e42] [cursor=pointer]:
+            - img "menu-fold" [ref=e44]:
+              - img [ref=e45]
+            - generic [ref=e47]: 收起菜单
+          - button "logout 退出登录" [ref=e48] [cursor=pointer]:
+            - img "logout" [ref=e50]:
+              - img [ref=e51]
+            - generic [ref=e53]: 退出登录
+    - main [ref=e55]:
+      - generic [ref=e64]:
+        - heading "统计图表" [level=2] [ref=e65]
+        - generic [ref=e68]:
+          - generic [ref=e70]:
+            - textbox "开始日期" [ref=e72]: 2026-04-01
+            - generic "to" [ref=e74]:
+              - img "swap-right" [ref=e75]:
+                - img [ref=e76]
+            - textbox "结束日期" [ref=e79]: 2026-04-30
+            - generic:
+              - img "calendar":
+                - img
+            - button "close-circle" [ref=e80] [cursor=pointer]:
+              - img "close-circle" [ref=e81]:
+                - img [ref=e82]
+          - generic [ref=e85] [cursor=pointer]:
+            - generic [ref=e87]:
+              - combobox [ref=e89]
+              - generic "按周" [ref=e90]
+            - generic:
+              - img:
+                - img
+          - generic [ref=e91]: 本周
+          - generic [ref=e92]: 本月
+          - generic [ref=e93]: 本季度
+          - generic [ref=e94]: 本年
+          - generic [ref=e95]:
+            - text: 支出明细
+            - switch [ref=e96] [cursor=pointer]
+        - generic [ref=e99]:
+          - generic [ref=e101]:
+            - generic [ref=e104]: 支出趋势
+            - generic [ref=e107]:
+              - img [ref=e108]:
+                - generic [ref=e113]:
+                  - generic [ref=e115]: 04/06-04/12
+                  - generic [ref=e117]: 04/13-04/19
+                  - generic [ref=e119]: 04/20-04/26
+                  - generic [ref=e121]: 04/27-05/03
+                - generic [ref=e123]:
+                  - generic [ref=e125]: "0"
+                  - generic [ref=e127]: "15"
+                  - generic [ref=e129]: "30"
+                  - generic [ref=e131]: "45"
+                  - generic [ref=e133]: "60"
+              - list [ref=e142]:
+                - listitem [ref=e143]:
+                  - img [ref=e144]
+                  - text: 支出金额
+          - generic [ref=e147]:
+            - generic [ref=e149]:
+              - generic [ref=e150]: "分类支出 (总计: ¥239.11)"
+              - generic [ref=e152]:
+                - generic [ref=e153]:
+                  - generic [ref=e155]: AI会员
+                  - generic [ref=e156]: 77.76%
+                - generic [ref=e157]:
+                  - generic [ref=e159]: 音乐影视会员
+                  - generic [ref=e160]: 9.83%
+                - generic [ref=e161]:
+                  - generic [ref=e163]: 网盘存储会员
+                  - generic [ref=e164]: 4.88%
+                - generic [ref=e165]:
+                  - generic [ref=e167]: 通讯会员
+                  - generic [ref=e168]: 4.12%
+                - generic [ref=e169]: +1 更多
+            - img [ref=e173]:
+              - generic [ref=e174]:
+                - img [ref=e176]
+                - img [ref=e178]
+                - img [ref=e180]
+                - img [ref=e182]
+                - img [ref=e184]
+  - generic [ref=e185]: "0"

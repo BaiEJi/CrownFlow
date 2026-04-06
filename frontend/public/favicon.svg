@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1890ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#40a9ff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Crown -->
+  <path d="M6 14 L6 9 L10 12 L16 6 L22 12 L26 9 L26 14 L24 14 L24 16 L8 16 L8 14 Z" 
+        fill="#1890ff"/>
+  
+  <!-- Crown base -->
+  <rect x="8" y="16" width="16" height="2" fill="#1890ff"/>
+  
+  <!-- Flow waves -->
+  <path d="M4 20 Q8 18, 12 20 T20 20 T28 20 L28 22 Q24 24, 20 22 T12 22 T4 22 Z" 
+        fill="url(#flowGradient)" opacity="0.8"/>
+  
+  <path d="M4 23 Q8 21, 12 23 T20 23 T28 23 L28 25 Q24 27, 20 25 T12 25 T4 25 Z" 
+        fill="url(#flowGradient)" opacity="0.6"/>
+  
+  <path d="M4 26 Q8 24, 12 26 T20 26 T28 26 L28 28 Q24 30, 20 28 T12 28 T4 28 Z" 
+        fill="url(#flowGradient)" opacity="0.4"/>
+</svg>

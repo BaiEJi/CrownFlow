@@ -1,0 +1,134 @@
+{
+  "active_plan": "/home/lizy/projects/CrownFlow/.sisyphus/plans/ui-optimization.md",
+  "started_at": "2026-04-05T14:00:19.480Z",
+  "session_ids": [
+    "ses_2a20e3909ffecshsui44mMj9Kh",
+    "ses_2a20bf212ffewJhwCzjHAb5fF6",
+    "ses_2a2075cdaffe61T83RZeX8qqec",
+    "ses_2a203dd41ffeQo5dvTUn78U21f",
+    "ses_2a200e5aaffekzDSk9Z7P0tzD6",
+    "ses_2a1fe02b6ffegEjKY03F2G4ujo",
+    "ses_2a1f8d452ffe3WOQaE9ZNPZAh5",
+    "ses_2a1f33a4effekoEyK4mBoMf9wW",
+    "ses_2a1ee2756ffe255l7WiHz7y3aX",
+    "ses_2a1e79d3fffe1JLJl99igVfoFr",
+    "ses_2a1e1e7d3ffe8Tux2hHAQAgFOZ",
+    "ses_2a1d8aaf1ffeaHQk29t9EHpnZQ",
+    "ses_2a1d1257cffeUfC6tiGGYmih6U",
+    "ses_2a1cd7f4bffeJfu5TV2vJSsv7I",
+    "ses_2a1ca74fcffe83XsUEQfZXbv8I",
+    "ses_2a1b5a06bffeskcGi7Hcr0wb53"
+  ],
+  "plan_name": "ui-optimization",
+  "agent": "atlas",
+  "task_sessions": {
+    "todo:1": {
+      "task_key": "todo:1",
+      "task_label": "1",
+      "task_title": "Capture Baseline Screenshots (Before Any Changes)",
+      "session_id": "ses_2a20bf212ffewJhwCzjHAb5fF6",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-04-05T14:05:09.406Z"
+    },
+    "todo:2": {
+      "task_key": "todo:2",
+      "task_label": "2",
+      "task_title": "Create Favicon Assets (Crown + Flow Combination)",
+      "session_id": "ses_2a2075cdaffe61T83RZeX8qqec",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-04-05T14:10:13.931Z"
+    },
+    "todo:3": {
+      "task_key": "todo:3",
+      "task_label": "3",
+      "task_title": "Update Favicon Reference in index.html",
+      "session_id": "ses_2a203dd41ffeQo5dvTUn78U21f",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-04-05T14:12:29.761Z"
+    },
+    "todo:4": {
+      "task_key": "todo:4",
+      "task_label": "4",
+      "task_title": "Enable Chart Animations in Statistics.tsx",
+      "session_id": "ses_2a200e5aaffekzDSk9Z7P0tzD6",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-04-05T14:15:57.297Z"
+    },
+    "todo:5": {
+      "task_key": "todo:5",
+      "task_label": "5",
+      "task_title": "Add Gradient Fills to Trend Chart (Statistics.tsx)",
+      "session_id": "ses_2a1fe02b6ffegEjKY03F2G4ujo",
+      "agent": "Sisyphus-Junior",
+      "category": "visual-engineering",
+      "updated_at": "2026-04-05T14:21:04.047Z"
+    },
+    "todo:6": {
+      "task_key": "todo:6",
+      "task_label": "6",
+      "task_title": "Optimize Chart Tooltips and Styling (Statistics.tsx)",
+      "session_id": "ses_2a1f8d452ffe3WOQaE9ZNPZAh5",
+      "agent": "Sisyphus-Junior",
+      "category": "visual-engineering",
+      "updated_at": "2026-04-05T14:27:47.905Z"
+    },
+    "todo:7": {
+      "task_key": "todo:7",
+      "task_label": "7",
+      "task_title": "Use constants/colors.ts COLORS in Statistics.tsx",
+      "session_id": "ses_2a1f33a4effekoEyK4mBoMf9wW",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-04-05T14:31:51.268Z"
+    },
+    "todo:8": {
+      "task_key": "todo:8",
+      "task_label": "8",
+      "task_title": "Optimize CategoryManageTab Table Styling (Settings.tsx)",
+      "session_id": "ses_2a1ee2756ffe255l7WiHz7y3aX",
+      "agent": "Sisyphus-Junior",
+      "category": "visual-engineering",
+      "updated_at": "2026-04-05T14:39:53.653Z"
+    },
+    "todo:9": {
+      "task_key": "todo:9",
+      "task_label": "9",
+      "task_title": "Verify Dark Mode Support (Statistics + Settings)",
+      "session_id": "ses_2a1e79d3fffe1JLJl99igVfoFr",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-04-05T14:46:53.117Z"
+    },
+    "todo:10": {
+      "task_key": "todo:10",
+      "task_label": "10",
+      "task_title": "Responsive Testing (375px, 768px, 1024px, 1440px)",
+      "session_id": "ses_2a1e1e7d3ffe8Tux2hHAQAgFOZ",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-04-05T14:56:21.385Z"
+    },
+    "todo:11": {
+      "task_key": "todo:11",
+      "task_label": "11",
+      "task_title": "Final QA Screenshot Comparison (Before vs After)",
+      "session_id": "ses_2a1d8aaf1ffeaHQk29t9EHpnZQ",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-04-05T15:04:40.846Z"
+    },
+    "final-wave:f1": {
+      "task_key": "final-wave:f1",
+      "task_label": "F1",
+      "task_title": "**Plan Compliance Audit** — `oracle`",
+      "session_id": "ses_2a1b5a06bffeskcGi7Hcr0wb53",
+      "agent": "Sisyphus-Junior",
+      "category": "deep",
+      "updated_at": "2026-04-05T15:40:40.795Z"
+    }
+  }
+}

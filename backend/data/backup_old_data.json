@@ -1,0 +1,41 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "音乐影视会员",
+      "icon": "💻",
+      "color": "#ed5c64"
+    },
+    {
+      "id": 2,
+      "name": "游戏会员",
+      "icon": "🕹️",
+      "color": "#a0d911"
+    },
+    {
+      "id": 3,
+      "name": "网盘存储会员",
+      "icon": "💿",
+      "color": "#fadb14"
+    },
+    {
+      "id": 4,
+      "name": "奇怪的会员",
+      "icon": "🈲",
+      "color": "#eb2f96"
+    },
+    {
+      "id": 5,
+      "name": "AI会员",
+      "icon": "🤟",
+      "color": "#722ed1"
+    },
+    {
+      "id": 6,
+      "name": "购物会员",
+      "icon": "🏩",
+      "color": "#13c2c2"
+    }
+  ],
+  "members": []
+}

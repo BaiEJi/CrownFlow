@@ -1,0 +1,22 @@
+# Baseline Bundle Size Measurement
+# Date: 2026-04-05
+# Build Time: 35.86s
+# Node: v20.x, npm: 10.x
+# 
+# Format: chunk_name, uncompressed_bytes, gzip_bytes, brotli_bytes
+
+vendor-antd,1120031,334895,266630
+vendor-charts,373929,95854,79071
+vendor-icons,46223,14008,11486
+vendor-react,188940,59517,51895
+vendor-utils,364069,120711,99981
+
+# Summary (vendor chunks only)
+# Total uncompressed: 2093192 bytes (2.00 MB)
+# Total gzip: 624985 bytes (610.34 KB)
+# Total brotli: 509063 bytes (497.13 KB)
+
+# Build Metadata
+# stats.html size: 2013058 bytes (1.92 MB)
+# dist/ total size: 5739336 bytes (5.47 MB)
+# Circular chunk warnings: vendor-antd -> vendor-react, vendor-antd -> vendor-icons

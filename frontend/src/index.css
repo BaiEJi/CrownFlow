@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .ant-layout-sider {
+    display: none !important;
+  }
+  .mobile-nav {
+    display: flex !important;
+  }
+  .ant-layout-content {
+    padding: 12px !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-nav {
+    display: none !important;
+  }
+}
+
+body.dark {
+  background: #141414;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+body.dark #root {
+  background: #141414;
+}
+
+body.dark .ant-layout {
+  background: #141414 !important;
+}
+
+body.dark .mobile-nav {
+  background: #1f1f1f !important;
+  border-top-color: #303030 !important;
+}
+
+body.dark .ant-layout-sider {
+  background: #1f1f1f !important;
+}
+
+body.dark .ant-layout-content {
+  background: #141414 !important;
+}
+
+body.dark .ant-menu {
+  background: #1f1f1f !important;
+}
+
+/* Modal dark mode styles - for static Modal.confirm() */
+body.dark .ant-modal-content {
+  background: #1f1f1f !important;
+}
+
+body.dark .ant-modal-header {
+  background: #1f1f1f !important;
+  border-bottom-color: #303030 !important;
+}
+
+body.dark .ant-modal-title {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+body.dark .ant-modal-body {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+body.dark .ant-modal-footer {
+  border-top-color: #303030 !important;
+}
+
+body.dark .ant-modal-close {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+
+body.dark .ant-modal-close:hover {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+body.dark .ant-modal-confirm .anticon-exclamation-circle {
+  color: #faad14 !important;
+}
+
+body.dark .ant-modal-confirm-btns .ant-btn-default {
+  background: #303030 !important;
+  border-color: #424242 !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+body.dark .ant-modal-confirm-btns .ant-btn-default:hover {
+  background: #424242 !important;
+  border-color: #525252 !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+}
