@@ -70,7 +70,8 @@ ehthumbs.db
 Desktop.ini
 
 # 工具生成的临时文件
-.playwright-mcp/page-*.yml
-.sisyphus/evidence/*.png
+.opencode/skills/
+.sisyphus/
+.playwright-mcp/
 frontend/coverage/
 session-*.md
