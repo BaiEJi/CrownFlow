@@ -8,7 +8,7 @@
 
 import { useCallback } from 'react';
 import { statsApi } from '@/services/api';
-import type { SpendingQueryParams, TrendQueryParams } from '@/types';
+import type { SpendingQueryParams, TrendQueryParams, CategorySummaryResponse } from '@/types';
 import { useApi } from './useApi';
 
 export function useOverview(immediate = true) {
@@ -29,6 +29,27 @@ export function useOverview(immediate = true) {
     loading,
     error,
     fetchOverview,
+  };
+}
+
+export function useCategorySummary(immediate = true) {
+  const apiFunction = useCallback(async () => {
+    const response = await statsApi.getCategorySummary();
+    return response.data.data;
+  }, []);
+
+  const {
+    data: categorySummary,
+    loading,
+    error,
+    execute: fetchCategorySummary,
+  } = useApi(apiFunction, { immediate });
+
+  return {
+    categorySummary,
+    loading,
+    error,
+    fetchCategorySummary,
   };
 }
 

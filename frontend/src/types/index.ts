@@ -181,6 +181,23 @@ export interface OverviewResponse {
   yearly_spending: number;
 }
 
+/** 分类支出汇总项 */
+export interface CategorySummaryItem {
+  category_id: number;
+  category_name: string;
+  category_icon?: string;
+  category_color?: string;
+  monthly_spending: number;
+  yearly_spending: number;
+}
+
+/** 分类支出汇总响应 */
+export interface CategorySummaryResponse {
+  categories: CategorySummaryItem[];
+  total_monthly: number;
+  total_yearly: number;
+}
+
 /** 趋势数据项 */
 export interface TrendItem {
   date: string;

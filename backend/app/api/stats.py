@@ -272,6 +272,93 @@ def get_by_category():
     })
 
 
+@bp.route("/category-summary", methods=["GET"])
+def get_category_summary():
+    """
+    获取各分类的本月和年度支出汇总
+    
+    Returns:
+        - categories: 各分类支出列表
+            - category_id: 分类ID
+            - category_name: 分类名称
+            - category_icon: 分类图标
+            - category_color: 分类颜色
+            - monthly_spending: 本月支出
+            - yearly_spending: 年度支出
+        - total_monthly: 本月总支出
+        - total_yearly: 年度总支出
+    """
+    db = get_db()
+    today = datetime.now().strftime("%Y-%m-%d")
+    month_start = datetime.now().replace(day=1).strftime("%Y-%m-%d")
+    month_end = (datetime.now().replace(day=1) + timedelta(days=32)).replace(day=1) - timedelta(days=1)
+    month_end_str = month_end.strftime("%Y-%m-%d")
+    year_start = datetime.now().replace(month=1, day=1).strftime("%Y-%m-%d")
+    year_end = datetime.now().replace(month=12, day=31).strftime("%Y-%m-%d")
+
+    subscriptions = db.query(Subscription).options(
+        joinedload(Subscription.member).joinedload(Member.category)
+    ).filter(
+        Subscription.end_date >= year_start,
+        Subscription.start_date <= year_end
+    ).all()
+
+    category_monthly = defaultdict(Decimal)
+    category_yearly = defaultdict(Decimal)
+    category_meta = {}
+    total_monthly = Decimal("0")
+    total_yearly = Decimal("0")
+
+    for sub in subscriptions:
+        daily_rate = calculate_daily_rate(
+            sub.price, sub.billing_cycle, sub.custom_days, sub.start_date
+        )
+        daily_rate_cny = convert_to_base(daily_rate, sub.currency)
+
+        member = sub.member
+        if member and member.category_id:
+            cat_id = member.category_id
+            
+            # 本月支出
+            month_overlap = calculate_overlap_days(
+                sub.start_date, sub.end_date, month_start, month_end_str
+            )
+            month_spending = daily_rate_cny * Decimal(month_overlap)
+            category_monthly[cat_id] += month_spending
+            total_monthly += month_spending
+
+            # 年度支出
+            year_overlap = calculate_overlap_days(
+                sub.start_date, sub.end_date, year_start, year_end
+            )
+            year_spending = daily_rate_cny * Decimal(year_overlap)
+            category_yearly[cat_id] += year_spending
+            total_yearly += year_spending
+
+            if member.category and cat_id not in category_meta:
+                category_meta[cat_id] = member.category
+
+    result = []
+    for cat_id in category_meta.keys():
+        category = category_meta[cat_id]
+        result.append({
+            "category_id": cat_id,
+            "category_name": category.name,
+            "category_icon": category.icon,
+            "category_color": category.color,
+            "monthly_spending": float(category_monthly[cat_id].quantize(Decimal("0.01"))),
+            "yearly_spending": float(category_yearly[cat_id].quantize(Decimal("0.01")))
+        })
+
+    result.sort(key=lambda x: x["yearly_spending"], reverse=True)
+
+    return api_response({
+        "categories": result,
+        "total_monthly": float(total_monthly.quantize(Decimal("0.01"))),
+        "total_yearly": float(total_yearly.quantize(Decimal("0.01")))
+    })
+
+
 @bp.route("/trend", methods=["GET"])
 def get_trend():
     """

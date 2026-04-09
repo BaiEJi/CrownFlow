@@ -26,6 +26,7 @@ import type {
   SpendingResponse,
   SpendingQueryParams,
   OverviewResponse,
+  CategorySummaryResponse,
   TrendResponse,
   TrendQueryParams,
   ReminderResponse,
@@ -304,6 +305,10 @@ export const statsApi = {
   /** 获取概览数据 */
   getOverview: () =>
     requestWithRetry(() => api.get<ApiResponse<OverviewResponse>>('/stats/overview')),
+
+  /** 获取分类支出汇总 */
+  getCategorySummary: () =>
+    requestWithRetry(() => api.get<ApiResponse<CategorySummaryResponse>>('/stats/category-summary')),
 
   /** 获取支出统计 */
   getSpending: (params: SpendingQueryParams) =>

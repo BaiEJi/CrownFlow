@@ -6,7 +6,8 @@
  */
 
 import React, { useMemo, useState, useEffect, lazy, Suspense } from 'react';
-import { Card, Row, Col, Statistic, List, Tag, Empty, Alert, Button, Tooltip, Space, Skeleton } from 'antd';
+import { Card, Row, Col, Statistic, List, Tag, Empty, Alert, Button, Tooltip, Space, Skeleton, Table } from 'antd';
+import type { ColumnsType } from 'antd/es/table';
 import {
   UserOutlined,
   CalendarOutlined,
@@ -15,10 +16,11 @@ import {
   QuestionCircleOutlined,
 } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-import { useOverview, useReminders } from '@/hooks';
+import { useOverview, useReminders, useCategorySummary } from '@/hooks';
 import { formatPrice } from '@/utils';
 import { adjustForDarkModeWithContrast } from '@/constants/colors';
 import { ApiError } from '@/services/api';
+import type { CategorySummaryItem } from '@/types';
 
 /**
  * 会员支出排行榜骨架屏
@@ -73,34 +75,60 @@ const Dashboard: React.FC = () => {
     fetchReminders,
   } = useReminders(true);
 
+  const {
+    categorySummary,
+    loading: categoryLoading,
+    fetchCategorySummary,
+  } = useCategorySummary(true);
+
   const loading = overviewLoading || remindersLoading;
 
-  /**
-   * 刷新数据
-   */
   const handleRefresh = () => {
     fetchOverview();
     fetchReminders();
+    fetchCategorySummary();
   };
 
-  /**
-   * 查看会员详情
-   */
   const handleViewMember = (memberId: number) => {
     navigate(`/members/${memberId}`);
   };
 
-  /**
-   * 排序后的提醒列表
-   */
   const sortedReminders = useMemo(() => {
     if (!reminders) return [];
     return [...reminders].sort((a, b) => a.days_remaining - b.days_remaining);
   }, [reminders]);
 
-  /**
-   * 错误状态渲染
-   */
+  const categoryColumns: ColumnsType<CategorySummaryItem> = useMemo(() => [
+    {
+      title: '分类',
+      dataIndex: 'category_name',
+      key: 'category_name',
+      render: (text: string, record: CategorySummaryItem) => (
+        <Space>
+          <span style={{ fontSize: 16 }}>{record.category_icon || '📦'}</span>
+          <span>{text}</span>
+        </Space>
+      ),
+    },
+    {
+      title: '本月支出',
+      dataIndex: 'monthly_spending',
+      key: 'monthly_spending',
+      align: 'right',
+      render: (value: number) => `¥${value.toFixed(2)}`,
+      sorter: (a, b) => a.monthly_spending - b.monthly_spending,
+      defaultSortOrder: 'descend',
+    },
+    {
+      title: '年度支出',
+      dataIndex: 'yearly_spending',
+      key: 'yearly_spending',
+      align: 'right',
+      render: (value: number) => `¥${value.toFixed(2)}`,
+      sorter: (a, b) => a.yearly_spending - b.yearly_spending,
+    },
+  ], []);
+
   if (overviewError) {
     const errorMsg = (overviewError as ApiError).message || '无法加载概览数据';
     
@@ -149,8 +177,8 @@ const Dashboard: React.FC = () => {
         </Button>
       </div>
       
-      <Row gutter={16}>
-        <Col xs={24} sm={12} md={6}>
+      <div style={{ display: 'flex', gap: 16 }}>
+        <div style={{ flex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
           <Card loading={loading}>
             <Statistic
               title="会员总数"
@@ -158,26 +186,22 @@ const Dashboard: React.FC = () => {
               prefix={<UserOutlined />}
             />
           </Card>
-        </Col>
-<Col xs={24} sm={12} md={6}>
-            <Card loading={loading}>
-              <Statistic
-                title="活跃会员"
-                value={overview?.active_members || 0}
-                prefix={<CalendarOutlined />}
-                valueStyle={{ color: activeMemberColor }}
-              />
-            </Card>
-          </Col>
-        <Col xs={24} sm={12} md={6}>
+          <Card loading={loading}>
+            <Statistic
+              title="活跃会员"
+              value={overview?.active_members || 0}
+              prefix={<CalendarOutlined />}
+              valueStyle={{ color: activeMemberColor }}
+            />
+          </Card>
           <Card loading={loading}>
             <Statistic
               title={
                 <span>
                   本月支出{' '}
-<Tooltip title="按日均价格 × 本月覆盖天数计算（整月）">
-                      <QuestionCircleOutlined style={{ color: 'var(--ant-color-text-tertiary)', fontSize: 12 }} />
-                    </Tooltip>
+                  <Tooltip title="按日均价格 × 本月覆盖天数计算（整月）">
+                    <QuestionCircleOutlined style={{ color: 'var(--ant-color-text-tertiary)', fontSize: 12 }} />
+                  </Tooltip>
                 </span>
               }
               value={overview?.monthly_spending || 0}
@@ -186,16 +210,14 @@ const Dashboard: React.FC = () => {
               valueStyle={{ color: monthlySpendingColor }}
             />
           </Card>
-        </Col>
-        <Col xs={24} sm={12} md={6}>
           <Card loading={loading}>
             <Statistic
               title={
                 <span>
                   年度支出{' '}
-<Tooltip title="按日均价格 × 本年覆盖天数计算（整年）">
-                      <QuestionCircleOutlined style={{ color: 'var(--ant-color-text-tertiary)', fontSize: 12 }} />
-                    </Tooltip>
+                  <Tooltip title="按日均价格 × 本年覆盖天数计算（整年）">
+                    <QuestionCircleOutlined style={{ color: 'var(--ant-color-text-tertiary)', fontSize: 12 }} />
+                  </Tooltip>
                 </span>
               }
               value={overview?.yearly_spending || 0}
@@ -204,8 +226,41 @@ const Dashboard: React.FC = () => {
               valueStyle={{ color: yearlySpendingColor }}
             />
           </Card>
-        </Col>
-      </Row>
+        </div>
+        <Card 
+          loading={categoryLoading}
+          style={{ flex: 1 }}
+          styles={{ body: { padding: '8px 12px' } }}
+        >
+          <Table
+            dataSource={categorySummary?.categories || []}
+            columns={categoryColumns}
+            rowKey="category_id"
+            size="small"
+            pagination={false}
+            scroll={{ y: 208 }}
+            showHeader={true}
+            summary={() => {
+              if (!categorySummary) return null;
+              return (
+                <Table.Summary fixed>
+                  <Table.Summary.Row>
+                    <Table.Summary.Cell index={0}>
+                      <strong>合计</strong>
+                    </Table.Summary.Cell>
+                    <Table.Summary.Cell index={1} align="right">
+                      <strong>¥{categorySummary.total_monthly.toFixed(2)}</strong>
+                    </Table.Summary.Cell>
+                    <Table.Summary.Cell index={2} align="right">
+                      <strong>¥{categorySummary.total_yearly.toFixed(2)}</strong>
+                    </Table.Summary.Cell>
+                  </Table.Summary.Row>
+                </Table.Summary>
+              );
+            }}
+          />
+        </Card>
+      </div>
 
       <Card
         title={
