@@ -23,7 +23,6 @@ const Members = lazy(() => import('./pages/Members'));
 const MemberDetail = lazy(() => import('./pages/MemberDetail'));
 const Statistics = lazy(() => import('./pages/Statistics'));
 const Settings = lazy(() => import('./pages/Settings'));
-const Journal = lazy(() => import('./pages/Journal'));
 
 const LoadingFallback = () => (
   <div style={{
@@ -70,15 +69,14 @@ function App() {
               <PrivateRoute>
                 <MainLayout>
                   <Suspense fallback={<LoadingFallback />}>
-<Routes>
-                       <Route path="/" element={<Navigate to="/dashboard" replace />} />
-                       <Route path="/dashboard" element={<Dashboard />} />
-                       <Route path="/members" element={<Members />} />
-                       <Route path="/members/:id" element={<MemberDetail />} />
-                       <Route path="/statistics" element={<Statistics />} />
-                       <Route path="/settings" element={<Settings />} />
-                       <Route path="/journal" element={<Journal />} />
-                     </Routes>
+                    <Routes>
+                      <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                      <Route path="/dashboard" element={<Dashboard />} />
+                      <Route path="/members" element={<Members />} />
+                      <Route path="/members/:id" element={<MemberDetail />} />
+                      <Route path="/statistics" element={<Statistics />} />
+                      <Route path="/settings" element={<Settings />} />
+                    </Routes>
                   </Suspense>
                 </MainLayout>
               </PrivateRoute>

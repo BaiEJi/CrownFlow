@@ -12,5 +12,4 @@ export { useReminders } from './useReminders';
 export { useDebounce, useDebouncedValue } from './useDebounce';
 export { useLocalStorage } from './useLocalStorage';
 export { useSubscriptions, useSubscription } from './useSubscriptions';
-export { useJournals, useJournal, useJournalEvents, useReflections } from './useJournals';
 export { useHolidays } from './useHolidays';
